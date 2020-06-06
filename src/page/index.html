@@ -1,0 +1,57 @@
+<!--
+ * @Author: last order
+ * @Date: 2020-06-01 17:52:40
+ * @LastEditTime: 2020-06-04 17:09:07
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+        #app {
+            width: 700px;
+            display: flex;
+        }
+        .el-input {
+            margin-right:  10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div id="app">
+        <input type="text" v-model="message"></input>
+        <button  @click="send">发送弹幕</button>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script>
+    new Vue({
+        el: '#app',
+        data () {
+            return {
+                message: 'hello world',
+                barrageContainer: undefined
+            }
+        },
+        mounted () {
+            console.log(Barrage)
+            this.barrageContainer = new Barrage({
+                width: 700,
+                height: 400,
+                container: document.querySelector('.container')
+            })
+        },
+        methods: {
+            send () {
+                this.barrageContainer.draw(this.message)
+                console.log(this.barrageContainer)
+            }
+        }
+    })
+</script>
+</html>
